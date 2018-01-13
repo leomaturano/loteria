@@ -1,0 +1,2 @@
+# loteria
+iniciando c#
