@@ -6,6 +6,7 @@
     <h1>Loteria - Controle de Soteios da Mega-Sena</h1>
 </div>
 
+<!-- ko if: janela() === "Concurso" -->
 <div class="row">
     <div class="col-md-10">
         <div class="panel panel-default">
@@ -14,7 +15,6 @@
             </div>
             <div class="panel-body">
                 <table class="table">
-                    <caption>Optional table caption.</caption>
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -37,8 +37,15 @@
                             <td data-bind="text: Sorteio[4]"></td>
                             <td data-bind="text: Sorteio[5]"></td>
                             <th>
-                                <small><a href="#" data-bind="click: $parent.getConcursosDetail">Detalhe</a></small>
-                                <small><a href="#" data-bind="click: $parent.detail('')">Ocultar</a></small>
+                                <button type="button" class="btn btn-success" data-bind="click: $parent.acaoApostar">Apostar</button>
+
+                                <!-- ko if: Sorteado === "S" -->
+                                <button type="button" class="btn btn-primary" data-bind="click: $parent.acaoResultado">Resultado</button>
+                                <!-- /ko -->
+                                <!-- ko if: Sorteado === "N" -->
+                                <button type="button" class="btn btn-info" data-bind="click: $parent.acaoSortear">Sortear</button>
+                                <!-- /ko -->
+
                             </th>
                         </tr>
                     </tbody>
@@ -47,15 +54,50 @@
         </div>
         <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
     </div>
-
-    <div class="col-md-1">
-        <!-- TODO: Book details -->
-    </div>
-
-    <div class="col-md-1">
-        <!-- TODO: Add new book -->
+</div>
+<!-- /ko -->
+<!-- ko if: janela() === "Aposta" -->
+<div class="row">
+    <div class="col-md-10">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Apostas</h2>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                                <th>Id</th>
+                                <th>Concurso</th>
+                                <th>Data e Hora</th>
+                                <th>Jogo No 1</th>
+                                <th>Jogo No 2</th>
+                                <th>Jogo No 3</th>
+                                <th>Jogo No 4</th>
+                                <th>Jogo No 5</th>
+                                <th>Jogo No 6</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: apostas">
+                        <tr>
+                            <th scope="row" data-bind="text: Id"></th>
+                            <td data-bind="text: ConcursoId"></td>
+                            <td data-bind="text: DataHora"></td>
+                            <td data-bind="text: Jogo[0]"></td>
+                            <td data-bind="text: Jogo[1]"></td>
+                            <td data-bind="text: Jogo[2]"></td>
+                            <td data-bind="text: Jogo[3]"></td>
+                            <td data-bind="text: Jogo[4]"></td>
+                            <td data-bind="text: Jogo[5]"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
     </div>
 </div>
+<!-- /ko -->
 <!-- ko if:detail() -->
 <div class="row">
     <div class="panel panel-default">
@@ -73,6 +115,6 @@
             <tr><td>Sorteio No.5</td><td data-bind="text: detail().Sorteio[4]"></td></tr>
             <tr><td>Sorteio No.6</td><td data-bind="text: detail().Sorteio[5]"></td></tr>
         </table>
-        </div>
     </div>
+</div>
 <!-- /ko -->

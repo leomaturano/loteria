@@ -10,9 +10,9 @@ namespace Loteria.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
+            ViewBag.Title = "Loteria Mega-Sena";
             return View();
         }
+
     }
 }
