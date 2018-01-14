@@ -17,9 +17,10 @@ namespace Loteria.Models
     
         public LoteriaContext() : base("name=LoteriaContext")
         {
+            this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
         }
 
-        public System.Data.Entity.DbSet<Loteria.Models.Concurso> Concursoes { get; set; }
+        public System.Data.Entity.DbSet<Loteria.Models.Concurso> Concursos { get; set; }
 
         public System.Data.Entity.DbSet<Loteria.Models.Aposta> Apostas { get; set; }
     }

@@ -13,7 +13,7 @@ namespace Loteria.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201801131708490_Initial"; }
+            get { return "201801132026035_Initial"; }
         }
         
         string IMigrationMetadata.Source

@@ -13,12 +13,12 @@ namespace Loteria.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         DataHora = c.DateTime(nullable: false),
-                        Numeros_Jogo1 = c.Int(nullable: false),
-                        Numeros_Jogo2 = c.Int(nullable: false),
-                        Numeros_Jogo3 = c.Int(nullable: false),
-                        Numeros_Jogo4 = c.Int(nullable: false),
-                        Numeros_Jogo5 = c.Int(nullable: false),
-                        Numeros_Jogo6 = c.Int(nullable: false),
+                        Jogo1 = c.Int(nullable: false),
+                        Jogo2 = c.Int(nullable: false),
+                        Jogo3 = c.Int(nullable: false),
+                        Jogo4 = c.Int(nullable: false),
+                        Jogo5 = c.Int(nullable: false),
+                        Jogo6 = c.Int(nullable: false),
                         ConcursoID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
@@ -30,12 +30,12 @@ namespace Loteria.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Numeros_Jogo1 = c.Int(nullable: false),
-                        Numeros_Jogo2 = c.Int(nullable: false),
-                        Numeros_Jogo3 = c.Int(nullable: false),
-                        Numeros_Jogo4 = c.Int(nullable: false),
-                        Numeros_Jogo5 = c.Int(nullable: false),
-                        Numeros_Jogo6 = c.Int(nullable: false),
+                        Sorteio1 = c.Int(nullable: true),
+                        Sorteio2 = c.Int(nullable: true),
+                        Sorteio3 = c.Int(nullable: true),
+                        Sorteio4 = c.Int(nullable: true),
+                        Sorteio5 = c.Int(nullable: true),
+                        Sorteio6 = c.Int(nullable: true),
                     })
                 .PrimaryKey(t => t.Id);
             

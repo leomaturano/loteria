@@ -184,21 +184,23 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ApostasController.cs" />
-    <Compile Include="Controllers\ConcursoesController.cs" />
+    <Compile Include="Controllers\ConcursosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\SortearController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801131708490_Initial.cs" />
-    <Compile Include="Migrations\201801131708490_Initial.Designer.cs">
-      <DependentUpon>201801131708490_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201801132026035_Initial.cs" />
+    <Compile Include="Migrations\201801132026035_Initial.Designer.cs">
+      <DependentUpon>201801132026035_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Aposta.cs" />
+    <Compile Include="Models\ApostaDetalheDTO.cs" />
+    <Compile Include="Models\ApostaDTO.cs" />
     <Compile Include="Models\Concurso.cs" />
+    <Compile Include="Models\ConcursoDTO.cs" />
     <Compile Include="Models\LoteriaContext.cs" />
-    <Compile Include="Models\Volante.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -270,8 +272,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801131708490_Initial.resx">
-      <DependentUpon>201801131708490_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801132026035_Initial.resx">
+      <DependentUpon>201801132026035_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
