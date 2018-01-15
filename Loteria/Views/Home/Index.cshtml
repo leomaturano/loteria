@@ -62,20 +62,66 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h2 class="panel-title">Apostas</h2>
+                <div class="row">
+                    <button type="button" class="btn btn-success" data-bind="click: acaoNovaAposta">Nova Aposta</button>
+                    <button type="button" class="btn btn-info" data-bind="click: acaoVoltarConcursos">Concursos</button>
+                </div>
+                <span></span>
+                <!-- ko if: janelaNovaAposta() === "Ativa" -->
+                <form class="form-horizontal" data-bind="submit: acaoSalvarAposta">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Concurso Corrente</label>
+                        <label class="col-sm-2 control-label" data-bind="text: novaAposta.ConcursoId"></label>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputJogo1" class="col-sm-2 control-label">Jogo1</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" id="inputJogo1" data-bind="value: novaAposta.Jogo1" min="1" max="60" />
+                        </div>
+
+                        <label for="inputJogo2" class="col-sm-2 control-label">Jogo2</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" id="inputJogo2" data-bind="value: novaAposta.Jogo2" min="1" max="60" />
+                        </div>
+
+                        <label for="inputJogo3" class="col-sm-2 control-label">Jogo3</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" id="inputJogo3" data-bind="value: novaAposta.Jogo3" min="1" max="60" />
+                        </div>
+
+                        <label for="inputJogo4" class="col-sm-2 control-label">Jogo4</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" id="inputJogo4" data-bind="value: novaAposta.Jogo4" min="1" max="60" />
+                        </div>
+
+                        <label for="inputJogo5" class="col-sm-2 control-label">Jogo5</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" id="inputJogo5" data-bind="value: novaAposta.Jogo5" min="1" max="60" />
+                        </div>
+
+                        <label for="inputJogo6" class="col-sm-2 control-label">Jogo6</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" id="inputJogo6" data-bind="value: novaAposta.Jogo6" min="1" max="60" />
+                        </div>
+
+                    </div>
+                    <button type="submit" class="btn btn-default">Salvar</button>
+                </form>
+                <!-- /ko -->
             </div>
             <div class="panel-body">
                 <table class="table">
                     <thead>
                         <tr>
-                                <th>Id</th>
-                                <th>Concurso</th>
-                                <th>Data e Hora</th>
-                                <th>Jogo No 1</th>
-                                <th>Jogo No 2</th>
-                                <th>Jogo No 3</th>
-                                <th>Jogo No 4</th>
-                                <th>Jogo No 5</th>
-                                <th>Jogo No 6</th>
+                            <th>Id</th>
+                            <th>Concurso</th>
+                            <th>Data e Hora</th>
+                            <th>Jogo No 1</th>
+                            <th>Jogo No 2</th>
+                            <th>Jogo No 3</th>
+                            <th>Jogo No 4</th>
+                            <th>Jogo No 5</th>
+                            <th>Jogo No 6</th>
                         </tr>
                     </thead>
                     <tbody data-bind="foreach: apostas">

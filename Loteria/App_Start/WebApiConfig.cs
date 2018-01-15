@@ -19,6 +19,11 @@ namespace Loteria
                  routeTemplate: "api/{controller}/{id}",
                  defaults: new { id = RouteParameter.Optional }
              );
+            config.Routes.MapHttpRoute(
+                name: "ActionApi",
+                routeTemplate: "api/{controller}/{id}/{action}",
+                defaults: new { id = RouteParameter.Optional }
+            );
         }
     }
 }

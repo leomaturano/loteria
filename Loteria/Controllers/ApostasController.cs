@@ -18,12 +18,16 @@ namespace Loteria.Controllers
         private LoteriaContext db = new LoteriaContext();
 
         // GET: api/Apostas
+        [HttpGet]
+        [ActionName("")]
         public IQueryable<Aposta> GetApostas()
         {
             return db.Apostas;
         }
 
         // GET: api/Apostas/5
+        [HttpGet]
+        [ActionName("")]
         [ResponseType(typeof(Aposta))]
         public async Task<IHttpActionResult> GetAposta(int id)
         {
@@ -36,70 +40,36 @@ namespace Loteria.Controllers
             return Ok(aposta);
         }
 
-        // PUT: api/Apostas/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutAposta(int id, Aposta aposta)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != aposta.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(aposta).State = EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ApostaExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
         // POST: api/Apostas
+        [HttpPost]
+        [ActionName("")]
         [ResponseType(typeof(Aposta))]
-        public async Task<IHttpActionResult> PostAposta(Aposta aposta)
+        public async Task<IHttpActionResult> PostAposta(ApostaDTO aDTO)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                Aposta x = new Aposta()
+                {
+                    Id = 999
+                };
+
+                return Ok(x);
+                // return BadRequest(ModelState);
             }
+            Aposta aposta = new Aposta();
+            aposta.ConcursoID = aDTO.ConcursoId;
+            aposta.DataHora = DateTime.Now;
+            aposta.Jogo1 = aDTO.Jogo[0];
+            aposta.Jogo2 = aDTO.Jogo[1];
+            aposta.Jogo3 = aDTO.Jogo[2];
+            aposta.Jogo4 = aDTO.Jogo[3];
+            aposta.Jogo5 = aDTO.Jogo[4];
+            aposta.Jogo6 = aDTO.Jogo[5];
 
             db.Apostas.Add(aposta);
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = aposta.Id }, aposta);
-        }
-
-        // DELETE: api/Apostas/5
-        [ResponseType(typeof(Aposta))]
-        public async Task<IHttpActionResult> DeleteAposta(int id)
-        {
-            Aposta aposta = await db.Apostas.FindAsync(id);
-            if (aposta == null)
-            {
-                return NotFound();
-            }
-
-            db.Apostas.Remove(aposta);
-            await db.SaveChangesAsync();
-
-            return Ok(aposta);
         }
 
         protected override void Dispose(bool disposing)

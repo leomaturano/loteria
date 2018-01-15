@@ -8,7 +8,7 @@ namespace Loteria.Models
     public class ApostaDetalheDTO
     {
         public int Id { get; set; }
-        public int ConcursoID { get; set; }
+        public int ConcursoId { get; set; }
         public DateTime DataHora { get; set; }
         public List<int> Jogo { get; set; }
 

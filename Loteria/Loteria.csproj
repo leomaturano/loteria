@@ -186,8 +186,6 @@
     <Compile Include="Controllers\ApostasController.cs" />
     <Compile Include="Controllers\ConcursosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ResultadoController.cs" />
-    <Compile Include="Controllers\SortearController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
