@@ -3,7 +3,7 @@ Avaliação em C#
 
 Para executar a amostra localmente a partir do Visual Studio:
 
-- Clone o projeto do Repositorio
+- Clone o Repositorio
 - Abra o projeto no Visual Studio
 - Construa a solução.
 - Abra o Console do Gerenciador de Pacotes (Tools > NuGet Package Manager > Package Manager Console)
