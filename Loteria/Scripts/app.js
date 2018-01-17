@@ -59,13 +59,14 @@
         });
     };
 
-    self.getAllApostas = function (concurso) {
-        ajaxHelper(concursosUri + concurso + '/apostas/', 'GET').done(function (data) {
+    self.getAllApostas = function () {
+        ajaxHelper(concursosUri + self.concursoCorrente + '/apostas/', 'GET').done(function (data) {
             for (let a of data) {
                 if (a.DataHora.length > 10) {
                     a.DataHora = formataData(a.DataHora);
                 }
             }
+            data.reverse()
             self.apostas(data);
         });
     };
@@ -73,7 +74,7 @@
     self.acaoApostar = function (item) {
         self.concursoCorrente = item.Id;
         self.janela('Aposta');
-        self.getAllApostas(self.concursoCorrente);
+        self.getAllApostas();
     };
 
     self.acaoResultado = function (item) {
@@ -93,23 +94,24 @@
         self.novaAposta.Jogo4(0);
         self.novaAposta.Jogo5(0);
         self.novaAposta.Jogo6(0);
-    }
+    };
+
     self.acaoSalvarAposta = function () {
         let apostaDTO = {
             'ConcursoId': self.novaAposta.ConcursoId(),
             'Jogo': [self.novaAposta.Jogo1(), self.novaAposta.Jogo2(), self.novaAposta.Jogo3(), self.novaAposta.Jogo4(), self.novaAposta.Jogo5(), self.novaAposta.Jogo6()]
         }
-        ajaxHelper(apostasUri, 'POST', apostaDTO).done(function (data) {
-            console.log(data);
-        });
+        ajaxHelper(apostasUri, 'POST', apostaDTO).done(function (data) {  });
+        self.acaoNovaAposta();
+        self.getAllApostas();
+    };
 
-    }
     self.acaoVoltarConcursos = function () {
         // Recarrega os concursos
         getAllConcursos();
         self.janelaNovaAposta('inativa');
         self.janela('Concurso');
-    }
+    };
 
     // Fetch the initial data.
     getAllConcursos();
