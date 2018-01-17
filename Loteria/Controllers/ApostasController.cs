@@ -56,19 +56,35 @@ namespace Loteria.Controllers
                 return Ok(x);
                 // return BadRequest(ModelState);
             }
+
             Aposta aposta = new Aposta();
-            aposta.ConcursoID = aDTO.ConcursoId;
-            aposta.DataHora = DateTime.Now;
-            aposta.Jogo1 = aDTO.Jogo[0];
-            aposta.Jogo2 = aDTO.Jogo[1];
-            aposta.Jogo3 = aDTO.Jogo[2];
-            aposta.Jogo4 = aDTO.Jogo[3];
-            aposta.Jogo5 = aDTO.Jogo[4];
-            aposta.Jogo6 = aDTO.Jogo[5];
 
-            db.Apostas.Add(aposta);
-            await db.SaveChangesAsync();
+            try
+            {
+                aposta.ConcursoID = aDTO.ConcursoId;
+                aposta.DataHora = DateTime.Now;
+                aposta.Jogo1 = aDTO.Jogo[0];
+                aposta.Jogo2 = aDTO.Jogo[1];
+                aposta.Jogo3 = aDTO.Jogo[2];
+                aposta.Jogo4 = aDTO.Jogo[3];
+                aposta.Jogo5 = aDTO.Jogo[4];
+                aposta.Jogo6 = aDTO.Jogo[5];
 
+                db.Apostas.Add(aposta);
+                await db.SaveChangesAsync();
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (ArgumentException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
             return CreatedAtRoute("DefaultApi", new { id = aposta.Id }, aposta);
         }
 
